@@ -29,5 +29,6 @@ def run(animation: str = 'stick', duration: int = 10, speed: float = 0.2):
             sys.stdout.write(animation[i % len(animation)])
             sys.stdout.flush()
         if time.time() - start_time > duration:
-            sys.stdout.flush()
+            sys.stdout.write("\r")
+            # sys.stdout.flush()
             break
