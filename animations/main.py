@@ -2,23 +2,32 @@ import typer
 import time 
 import sys
 
+from .constants import *
+
 app = typer.Typer()
 
 @app.command()
-def init():
+def run(animation: str = 'stick', duration: int = 10, speed: float = 0.2):
     """
-    Initialize the application.
+    Run the animation.
     """
+    
+    if animation == 'stick':
+        animation = STICK_ANIMATION
+    else:
+        if animation not in ANIMATIONS:
+            print(f"Animation '{animation}' not found.")
+            raise typer.Exit(code=1)
+        
+        animation = ANIMATIONS[animation]
 
-    animation = "|/-\\"
     start_time = time.time()
     while True:
-        for i in range(4):
-            time.sleep(0.2)  # Feel free to experiment with the speed here
-            sys.stdout.write("\r" + animation[i % len(animation)])
+        for i in range(len(animation)):
+            time.sleep(speed)
+            sys.stdout.write("\r")
+            sys.stdout.write(animation[i % len(animation)])
             sys.stdout.flush()
-        if time.time() - start_time > 10:  # The animation will last for 10 seconds
+        if time.time() - start_time > duration:
+            sys.stdout.flush()
             break
-
-if __name__ == "__main__":
-    app()

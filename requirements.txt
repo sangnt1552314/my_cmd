@@ -1,2 +1,4 @@
 typer
 pyfiglet
+autopep8
+pylint
