@@ -4,3 +4,11 @@
 #pycache
 __pycache__
 *.pyc
+
+LICENSE
+README.md
+
+.env*
+.git
+
+Dockerfile

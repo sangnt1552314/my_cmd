@@ -32,3 +32,6 @@ def run(animation: str = 'stick', duration: int = 10, speed: float = 0.2):
             sys.stdout.write("\r")
             # sys.stdout.flush()
             break
+
+if __name__ == "__main__":
+    app()
