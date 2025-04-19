@@ -2,3 +2,8 @@ typer
 pyfiglet
 autopep8
 pylint
+questionary
+pytube
+pytubefix
+python-vlc
+yt-dlp
