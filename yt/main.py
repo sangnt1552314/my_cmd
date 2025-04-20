@@ -54,7 +54,7 @@ def search(query: str, max_results: int = 5, type: str = "video"):
                     typer.Exit(1)
 
                 if action == "download" or action == "download_play":
-                    output_path = questionary.text(message="Enter the output path for the video:", default='public/video').ask()
+                    output_path = questionary.text(message="Enter the output path for the video:", default='downloads/video').ask()
                     output_path = youtube_video.download(output_path)
 
                     if output_path:
