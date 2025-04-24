@@ -7,10 +7,16 @@ from .utils import *
 app = typer.Typer()
 
 @app.command()
-def search(query: str, max_results: int = 5, type: str = "video"):
+def search(query: str = "", max_results: int = 5, type: str = "video"):
     """
     Search for a video on YouTube.
     """
+    if query == "":
+        query = questionary.text("Search videos:").ask()
+        if not query:
+            typer.echo("No search query provided.")
+            raise typer.Exit(1)
+
     videos = youtube_search(query, max_results, type)
     if videos:
         typer.echo(f"Found {len(videos)} videos:")
